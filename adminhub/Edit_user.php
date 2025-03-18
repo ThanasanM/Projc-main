@@ -177,7 +177,11 @@ if (isset($_GET['delete'])) {
                                         <!-- ปุ่มแก้ไข -->
                                         <a href="edituser.php?id=<?= $user['id']; ?>" class="btn btn-success btn-sm">แก้ไข</a>
                                         <!-- ปุ่มลบ -->
-                                        <a href="Edit_user.php?delete=<?= $user['id']; ?>" onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบผู้ใช้นี้?');" class="btn btn-danger btn-sm">ลบ</a>
+                                        <a href="delete_user_action.php?id=<?= $user['id']; ?>"
+                                            onclick="return confirm('ยืนยันการลบผู้ใช้นี้?');"
+                                            class="btn btn-danger btn-sm">
+                                            ลบ
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

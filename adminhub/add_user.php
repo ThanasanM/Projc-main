@@ -74,8 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <option value="user" selected>user</option>
                 </select>
             </div>
-
-            <button type="submit" class="btn btn-primary">เพิ่มผู้ใช้</button>
+            <a href="Edit_user.php" class="btn btn-primary">เพิ่มผู้ใช้</a>
             <a href="Edit_user.php" class="btn btn-secondary">กลับ</a>
         </form>
     </div>
