@@ -4,7 +4,7 @@ require_once '../config/db.php';
 
 // ตรวจสอบว่าได้รับ ID ของผู้ใช้ที่ต้องการแก้ไข
 if (!isset($_GET['id'])) {
-    header("Location: Edit_user.php");
+    header("Location:  User.php");
     exit();
 }
 
@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $update_query = "UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email, urole = :urole WHERE id = :id";
     $stmt = $conn->prepare($update_query);
     $stmt->execute([
-        'first_name' => $first_name,
-        'last_name' => $last_name,
+        'first_name' => $firstname,
+        'last_name' => $lastname,
         'email' => $email,
         'urole' => $urole,
         'id' => $id
@@ -53,51 +53,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แก้ไขข้อมูลผู้ใช้</title>
-
-    <!-- Bootstrap CSS -->
+    <title>แก้ไขผู้ใช้</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-light">
     <div class="container mt-5">
-        <h2>แก้ไขข้อมูลผู้ใช้</h2>
-
-        <!-- ฟอร์มแก้ไขข้อมูลผู้ใช้ -->
-        <form method="POST">
+        <h1 class="mb-4">แก้ไขผู้ใช้</h1>
+        <form method="POST" action="">
             <div class="mb-3">
-                <label for="firstname">ชื่อ:</label>
-                <input type="text" name="firstname" class="form-control" value="<?= htmlspecialchars($user['firstname']); ?>" required>
+                <label class="form-label">ชื่อ</label>
+                <input type="text" name="firstname" class="form-control" value="<?= htmlspecialchars($user['firstname']) ?>" required>
             </div>
-
             <div class="mb-3">
-                <label for="lastname">นามสกุล:</label>
-                <input type="text" name="lastname" class="form-control" value="<?= htmlspecialchars($user['lastname']); ?>" required>
+                <label class="form-label">นามสกุล</label>
+                <input type="text" name="lastname" class="form-control" value="<?= htmlspecialchars($user['lastname']) ?>" required>
             </div>
-
             <div class="mb-3">
-                <label for="email">อีเมล:</label>
-                <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($user['email']); ?>" required>
+                <label class="form-label">อีเมล</label>
+                <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($user['email']) ?>" required>
             </div>
-
             <div class="mb-3">
-                <label for="urole">สถานะ:</label>
-                <select name="urole" class="form-select">
-                    <option value="admin" <?= $user['urole'] == 'admin' ? 'selected' : ''; ?>>admin</option>
-                    <option value="teacher" <?= $user['urole'] == 'teacher' ? 'selected' : ''; ?>>teacher</option>
-                    <option value="member" <?= $user['urole'] == 'member' ? 'selected' : ''; ?>>member</option>
-                    <option value="user" <?= $user['urole'] == 'user' ? 'selected' : ''; ?>>user</option>
+                <label class="form-label">สถานะ</label>
+                <select name="urole" class="form-select" required>
+                    <option value="admin" <?= $user['urole'] == 'admin' ? 'selected' : '' ?>>Admin</option>
+                    <option value="teacher" <?= $user['urole'] == 'teacher' ? 'selected' : '' ?>>Teacher</option>
+                    <option value="member" <?= $user['urole'] == 'member' ? 'selected' : '' ?>>Member</option>
+                    <option value="user" <?= $user['urole'] == 'user' ? 'selected' : '' ?>>User</option>
                 </select>
             </div>
-
-            <a href="Edit_user.php" class="btn btn-primary">บันทึกการเปลี่ยนแปลง</a>
-            <a href="Edit_user.php" class="btn btn-secondary">กลับ</a>
+            <a href=" User.php" class="btn btn-primary">บันทึกการเปลี่ยนแปลง</a>
+            <a href=" User.php" class="btn btn-secondary">ยกเลิก</a>
         </form>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

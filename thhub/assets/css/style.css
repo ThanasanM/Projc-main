@@ -397,6 +397,10 @@ body {
 	background: var(--liso);
 	color: var(--lisa);
 }
+#content main .box-info li:nth-child(2) .bx {
+	background: var(--light-yellow);
+	color: var(--yellow);
+}
 
 #content main .box-info li .text h3 {
 	font-size: 24px;

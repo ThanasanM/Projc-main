@@ -34,10 +34,10 @@
                         if (password_verify($password, $row['password'])) {
                         if ($row['urole'] == 'admin') {
                             $_SESSION['admin_login'] = $row['id'];
-                            header("location: ..\adminhub\index.html");
+                            header("location: ..\adminhub\index.php");
                         } elseif ($row['urole'] == 'teacher') {
                             $_SESSION['teacher_login'] = $row['id'];
-                            header("location:../thhub\index.html");
+                            header("location:../thhub\index.php");
                         } else {
                             $_SESSION['user_login'] = $row['id'];
                             header("location: ..\homepage.html");

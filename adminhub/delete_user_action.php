@@ -25,5 +25,5 @@ if (isset($_GET['id'])) {
     }
 }
 
-header("Location: Edit_user.php");
+header("Location: User.php");
 exit();
